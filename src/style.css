@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo{
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: bolder;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #4c64ce, #764ba2, #f093fb, #f5576c);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientFlow 6s ease-in-out infinite;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+.app {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  padding: clamp(10px, 2vh, 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app.light {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+}
+
+.app.dark {
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+  color: #fff;
+}
+
+.theme-header {
+  text-align: center;
+  display: flex;
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: inherit;
+  padding: clamp(8px, 2vw, 12px);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-weight: bold;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(8px, 1.5vh, 16px);
+  margin-bottom: clamp(10px, 2vh, 20px);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.calculator {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: clamp(16px, 3vw, 24px);
+  padding: clamp(16px, 4vw, 24px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: min(95vw, 400px);
+  max-width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .calculator {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.display {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(16px, 4vw, 24px) clamp(12px, 3vw, 20px);
+  margin-bottom: clamp(15px, 3vh, 20px);
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  font-weight: 300;
+  text-align: right;
+  min-height: clamp(60px, 12vh, 80px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  transition: all 0.3s ease;
+}
+
+.dark .display {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mode-toggle {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: clamp(8px, 2vw, 12px);
+  padding: clamp(10px, 2.5vh, 12px) clamp(16px, 4vw, 20px);
+  margin-bottom: clamp(15px, 3vh, 20px);
+  cursor: pointer;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  font-weight: 500;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .mode-toggle {
+  background: linear-gradient(135deg, #4a5568, #2d3748);
+}
+
+.mode-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.scientific-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(8px, 2vw, 10px);
+  margin-bottom: clamp(15px, 3vh, 20px);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scientific-grid button {
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: clamp(8px, 2vw, 12px);
+  padding: clamp(10px, 2.5vh, 12px);
+  cursor: pointer;
+  font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scientific-grid button:hover {
+  transform: translateY(-2px);
+  background-color: #7c3aed;
+}
+
+.scientific-grid button:active {
+  transform: translateY(0);
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 2.5vw, 12px);
+  transition: all 0.3s ease;
+}
+
+.button-grid.scientific-mode {
+  gap: clamp(6px, 2vw, 8px);
+}
+
+.button-grid button {
+  border: none;
+  border-radius: clamp(12px, 3vw, 16px);
+  padding: clamp(16px, 4vh, 20px);
+  cursor: pointer;
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(45px, 8vh, 60px);
+}
+
+.button-grid.scientific-mode button {
+  padding: clamp(12px, 3vh, 16px);
+  font-size: clamp(0.85rem, 2.8vw, 1rem);
+  min-height: clamp(40px, 7vh, 50px);
+}
+
+.number-btn {
+  background: #ffffff;
+  color: #333;
+}
+
+.dark .number-btn {
+  background: linear-gradient(135deg, #4a5568, #2d3748);
+  color: #fff;
+}
+
+.operator-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.clear-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ffa726, #ff7043);
+  color: white;
+}
+
+.equals-btn {
+  background: #10b981;
+  color: white;
+}
+
+.zero-btn {
+  grid-column: span 1;
+}
+
+.button-grid button:hover {
+  transform: translateY(-3px);
+}
+
+.button-grid button:active {
+  transform: translateY(-1px);
+}
+
+.button-grid button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.button-grid button:hover::before {
+  left: 100%;
+}
+
+/* Enhanced Mobile Responsive Design */
+@media (max-width: 480px) {
+  .app {
+    padding: 2vh 2vw;
+    justify-content: flex-start;
+    padding-top: 5vh;
+  }
+  
+  .calculator {
+    width: 95vw;
+    max-width: 95vw;
+    padding: 4vw;
+    border-radius: 20px;
+  }
+  
+  .display {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+    min-height: 10vh;
+    padding: 4vw 3vw;
+  }
+  
+  .button-grid button {
+    padding: 3vh 2vw;
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    min-height: 7vh;
+  }
+  
+  .button-grid.scientific-mode button {
+    padding: 2.5vh 1.5vw;
+    font-size: clamp(0.75rem, 3.5vw, 0.85rem);
+    min-height: 6vh;
+  }
+  
+  .scientific-grid button {
+    padding: 2.5vh 2vw;
+    font-size: clamp(0.7rem, 3vw, 0.8rem);
+  }
+  
+  .header {
+    margin-bottom: 3vh;
+  }
+}
+
+@media (max-width: 360px) {
+  .app {
+    padding: 1vh 1vw;
+    padding-top: 3vh;
+  }
+  
+  .calculator {
+    width: 98vw;
+    padding: 3vw;
+  }
+  
+  .button-grid {
+    gap: 2vw;
+  }
+  
+  .button-grid button {
+    padding: 2.5vh 1vw;
+    font-size: clamp(0.8rem, 4.5vw, 1rem);
+    min-height: 6vh;
+  }
+  
+  .button-grid.scientific-mode button {
+    font-size: clamp(0.7rem, 4vw, 0.85rem);
+    min-height: 5.5vh;
+  }
+  
+  .display {
+    font-size: clamp(1.3rem, 7vw, 1.8rem);
+    min-height: 8vh;
+  }
+}
+
+/* Tablet Portrait */
+@media (min-width: 481px) and (max-width: 768px) {
+  .app {
+    padding: 3vh 5vw;
+  }
+  
+  .calculator {
+    width: min(80vw, 450px);
+    padding: 3vh 4vw;
+  }
+  
+  .display {
+    min-height: 10vh;
+    font-size: clamp(2rem, 5vw, 2.3rem);
+  }
+  
+  .button-grid button {
+    min-height: 8vh;
+    font-size: clamp(1.1rem, 3vw, 1.2rem);
+  }
+}
+
+/* Tablet Landscape and Desktop */
+@media (min-width: 769px) {
+  .app {
+    padding: 4vh 6vw;
+  }
+  
+  .calculator {
+    width: min(60vw, 450px);
+    max-width: 450px;
+    padding: 3vh 2vw;
+  }
+  
+  .display {
+    min-height: 12vh;
+    font-size: 2.5rem;
+  }
+  
+  .button-grid button {
+    min-height: 9vh;
+    font-size: 1.3rem;
+    padding: 3vh 1vw;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .calculator {
+    width: min(40vw, 500px);
+    max-width: 500px;
+  }
+  
+  .display {
+    min-height: 10vh;
+  }
+  
+  .button-grid button {
+    min-height: 8vh;
+  }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .app {
+    padding: 2vh 3vw;
+    justify-content: center;
+  }
+  
+  .calculator {
+    width: min(70vw, 600px);
+    padding: 2vh 3vw;
+  }
+  
+  .display {
+    min-height: 8vh;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .button-grid button {
+    min-height: 6vh;
+    padding: 1.5vh 2vw;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  }
+  
+  .button-grid.scientific-mode button {
+    min-height: 5vh;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+  }
+  
+  .header {
+    margin-bottom: 2vh;
+  }
+}
